@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mangaReleaseLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray"
+    android:elevation="0dp">
+
+    <ImageView
+        android:id="@+id/coverImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintDimensionRatio="h,3:4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/chapterNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoText="false"
+        android:background="@color/red"
+        android:elevation="0dp"
+        android:padding="5dp"
+        android:text="128"
+        android:textColor="@android:color/white"
+        app:layout_constraintRight_toRightOf="@+id/coverImageView"
+        app:layout_constraintTop_toTopOf="@+id/coverImageView" />
+
+    <TextView
+        android:id="@+id/coverMangaNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mangatitlegradient"
+        android:ellipsize="end"
+        android:gravity="bottom"
+        android:lines="3"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="30dp"
+        android:text="Real de Level Age Shitara Hobo Cheat na Jinsei ni Natta (Novel)"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/coverImageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/coverImageView"
+        app:layout_constraintRight_toRightOf="@+id/coverImageView" />
+
+    <FrameLayout
+        android:id="@+id/loadingLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/backGroundGrey"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/coverImageView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/coverImageView">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

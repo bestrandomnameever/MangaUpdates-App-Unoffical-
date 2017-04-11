@@ -9,17 +9,25 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import com.anupcowkur.reservoir.Reservoir
+import com.mangaupdates.android.mangaupdates_app_unofficial.fragments.DiscoverFrament
+import com.mangaupdates.android.mangaupdates_app_unofficial.fragments.ReleasesOverviewFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    lateinit var drawer : DrawerLayout
+    lateinit var toolbar: Toolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Reservoir.init(this,2048)
+
         setContentView(R.layout.activity_main)
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        drawer = findViewById(R.id.drawer_layout) as DrawerLayout
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.setDrawerListener(toggle)
@@ -27,6 +35,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val navigationView = findViewById(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
+
+        supportFragmentManager.beginTransaction().replace(R.id.content_main, ReleasesOverviewFragment.newInstance()).commit()
     }
 
     override fun onBackPressed() {
@@ -59,24 +69,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
         val id = item.itemId
+        val current = supportFragmentManager.findFragmentById(R.id.content_main)
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_releases) {
+            if (current is ReleasesOverviewFragment) {
+                drawer.closeDrawer(GravityCompat.START)
+            }else {
+                supportFragmentManager.beginTransaction().replace(R.id.content_main, ReleasesOverviewFragment.newInstance()).commit()
+            }
+        } else if (id == R.id.nav_discover) {
+            if (current is DiscoverFrament) {
+                drawer.closeDrawer(GravityCompat.START)
+            }else {
+                supportFragmentManager.beginTransaction().replace(R.id.content_main, DiscoverFrament.newInstance()).commit()
+            }
+        } else if (id == R.id.nav_history) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else {
 
         }
-
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
         drawer.closeDrawer(GravityCompat.START)
         return true
     }

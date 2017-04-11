@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="whatsNewOrder_array">
+        <item>Activity</item>
+        <item>Rating</item>
+        <item>Date</item>
+    </string-array>
+    <string-array name="whatsNewType_array">
+        <item>All</item>
+        <item>Artbook</item>
+        <item>Doujinshi</item>
+        <item>Manga</item>
+        <item>Manhwa</item>
+        <item>Manhua</item>
+        <item>Novel</item>
+        <item>OEL</item>
+    </string-array>
+</resources>
