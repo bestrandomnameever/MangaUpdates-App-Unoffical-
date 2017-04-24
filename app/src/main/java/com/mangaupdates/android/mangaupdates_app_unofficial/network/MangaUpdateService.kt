@@ -1,5 +1,6 @@
 package com.mangaupdates.android.mangaupdates_app_unofficial.network
 
+import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
@@ -14,6 +15,9 @@ interface MangaUpdateService {
 
     @GET("series.html")
     fun getMangaWithId(@Query("id") id: String) : Call<ResponseBody>
+
+    @GET("series.html")
+    fun getMangaWithIdObservable(@Query("id") id: String) : Observable<ResponseBody>
 
     @GET("series.html")
     fun searchMangaWithTitle(@Query("search") title: String, @Query("page") page: Int) : Call<ResponseBody>

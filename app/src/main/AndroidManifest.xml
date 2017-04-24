@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MangaDetailActivity"
+            android:name=".feature_mangaDetail.MangaDetailActivity"
             android:label="@string/title_activity_manga_detail"></activity>
     </application>
 

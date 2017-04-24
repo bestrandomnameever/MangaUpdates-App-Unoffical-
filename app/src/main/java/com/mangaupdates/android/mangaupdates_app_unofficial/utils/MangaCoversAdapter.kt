@@ -1,13 +1,13 @@
-package com.mangaupdates.android.mangaupdates_app_unofficial.views.adapters
+package com.mangaupdates.android.mangaupdates_app_unofficial.utils
 
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.Adapter
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mangaupdates.android.mangaupdates_app_unofficial.R
 import com.mangaupdates.android.mangaupdates_app_unofficial.models.MangaDetail
-import com.mangaupdates.android.mangaupdates_app_unofficial.utils.loadUrl
 import kotlinx.android.synthetic.main.releases_mangacover_viewholder.view.*
 
 /**
@@ -15,9 +15,8 @@ import kotlinx.android.synthetic.main.releases_mangacover_viewholder.view.*
  */
 class MangaCoversAdapter(listener: MangaCoversAdapterListener): Adapter<MangaCoversAdapter.ReleaseCoverViewHolder>() {
 
-    val mangas = mutableMapOf<Int,MangaDetail?>()
+    val mangas = mutableMapOf<Int, MangaDetail?>()
     val listener: MangaCoversAdapterListener = listener
-    var page = 1
 
     override fun onBindViewHolder(holder: ReleaseCoverViewHolder?, position: Int) {
         if (holder != null) {
@@ -38,6 +37,12 @@ class MangaCoversAdapter(listener: MangaCoversAdapterListener): Adapter<MangaCov
 
     override fun getItemCount(): Int {
         return mangas.size
+    }
+
+    fun reset() {
+        mangas.clear()
+        notifyDataSetChanged()
+        Log.d("MANGAS IN LIST", mangas.size.toString())
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ReleaseCoverViewHolder {
@@ -64,8 +69,6 @@ class MangaCoversAdapter(listener: MangaCoversAdapterListener): Adapter<MangaCov
 
         fun setIsLoaded() {
             itemView.loadingLayout.visibility = View.INVISIBLE
-            //Delete loading lkayout permanently
-            //itemView.loadingLayout = null
         }
     }
 

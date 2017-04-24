@@ -9,6 +9,7 @@ package com.mangaupdates.android.mangaupdates_app_unofficial.models
 data class MangaUpdatesResult(val ids: List<String>, val hasNextPage: Boolean)
 
 data class MangaDetail(val id: String, val name: String, val imageUrl: String, val latestChapter: String)
+//, val description : String, val genres : List<String>, val completlyScanlated
 
 /////////////////
 //MangaCoversDB

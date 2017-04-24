@@ -1,4 +1,4 @@
-package com.mangaupdates.android.mangaupdates_app_unofficial.fragments
+package com.mangaupdates.android.mangaupdates_app_unofficial.`feature_discover`
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

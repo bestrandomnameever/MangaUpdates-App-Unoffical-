@@ -12,4 +12,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="mangaDetailInfoTab">Info</string>
+    <string name="mangaDetailTagsTab">Tags</string>
+    <string name="mangaDetailRecommendationsTab">Recommendations</string>
+    <string name="mangaDetailReleasesTab">Releases</string>
+    <string name="mangaDetailActivityName">Manga Detail</string>
 </resources>
