@@ -1,4 +1,4 @@
-package com.mangaupdates.android.mangaupdates_app_unofficial.`feature_discover`
+package com.mangaupdates.android.mangaupdates_app_unofficial.feature.discover
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import android.widget.Spinner
 import com.mangaupdates.android.mangaupdates_app_unofficial.R
+import com.mangaupdates.android.mangaupdates_app_unofficial.models.MangaAdapterLoader
 import com.mangaupdates.android.mangaupdates_app_unofficial.network.MangaUpdatesAPI
 import com.mangaupdates.android.mangaupdates_app_unofficial.utils.MangaCoverOverviewFragment
 import com.mangaupdates.android.mangaupdates_app_unofficial.utils.MangaCoversAdapter
@@ -37,14 +38,8 @@ class WhatsnewFragement : MangaCoverOverviewFragment(), MangaCoversAdapter.Manga
         typeSpinner = view.typeSpinner
         yearSpinner = view.yearSpinner
         initializeSpinners()
-        return view
-    }
 
-    override fun setLoadingMethod(forPage: Int): Call<ResponseBody> {
-        val order = orderSpinner.selectedItem.toString().toLowerCase()
-        val type = typeSpinner.selectedItem.toString()
-        val year = yearSpinner.selectedItem.toString()
-        return MangaUpdatesAPI.getIdsWhatsNewPage(order,type,year,forPage)
+        return view
     }
 
     private fun initializeSpinners() {
@@ -71,6 +66,17 @@ class WhatsnewFragement : MangaCoverOverviewFragment(), MangaCoversAdapter.Manga
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
+    }
+
+    override fun getMangaAdapterLoader(): MangaAdapterLoader {
+        return object : MangaAdapterLoader {
+            override fun getIdsForPage(page: Int): Call<ResponseBody> {
+                val order = orderSpinner.selectedItem.toString().toLowerCase()
+                val type = typeSpinner.selectedItem.toString()
+                val year = yearSpinner.selectedItem.toString()
+                return MangaUpdatesAPI.getIdsWhatsNewPage(orderBy = order, type = type, year = year, page = page)
+            }
+        }
     }
 
     companion object {

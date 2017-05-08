@@ -11,8 +11,8 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import com.anupcowkur.reservoir.Reservoir
-import com.mangaupdates.android.mangaupdates_app_unofficial.`feature_discover`.DiscoverFrament
-import com.mangaupdates.android.mangaupdates_app_unofficial.feature_releases.ReleasesOverviewFragment
+import com.mangaupdates.android.mangaupdates_app_unofficial.feature.discover.DiscoverFrament
+import com.mangaupdates.android.mangaupdates_app_unofficial.feature.releases.ReleasesOverviewFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
 
